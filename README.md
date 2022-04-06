@@ -23,6 +23,7 @@ npx create-remix --template remix-run/blues-stack
 - Code formatting with [Prettier](https://prettier.io)
 - Linting with [ESLint](https://eslint.org)
 - Static Types with [TypeScript](https://typescriptlang.org)
+- Form validation with (zod) [remix-validated-form](https://github.com/airjp73/remix-validated-form)
 
 Not a fan of bits of the stack? Fork it, change it, and use `npx create-remix --template your/repo`! Make it your own.
 
