@@ -1,7 +1,8 @@
 version: "3.7"
 services:
   postgres:
-    image: postgres:latest
+    image: postgres:14.2-alpine
+    container_name: postgres
     restart: always
     environment:
       - POSTGRES_USER=postgres
