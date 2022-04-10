@@ -1,11 +1,9 @@
 # Remix Blues Stack
 
-![The Remix Blues Stack](https://repository-images.githubusercontent.com/461012689/37d5bd8b-fa9c-4ab0-893c-f0a199d5012d)
-
 Learn more about [Remix Stacks](https://remix.run/stacks).
 
 ```
-npx create-remix --template remix-run/blues-stack
+npx create-remix --template manoj016/blues-stack
 ```
 
 ## What's in the stack
