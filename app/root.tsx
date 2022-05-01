@@ -1,11 +1,5 @@
-import {
-  useEffect,
-  useContext
-} from "react";
-import type {
-  LoaderFunction,
-  MetaFunction,
-} from "@remix-run/node";
+import { useEffect, useContext } from "react";
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import {
   Links,
@@ -15,10 +9,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { withEmotionCache } from '@emotion/react';
-import { ChakraProvider } from '@chakra-ui/react';
+import { withEmotionCache } from "@emotion/react";
+import { ChakraProvider } from "@chakra-ui/react";
 
-import { ServerStyleContext, ClientStyleContext } from './context';
+import { ServerStyleContext, ClientStyleContext } from "./context";
 import { getUser } from "./session.server";
 import theme from "~/theme/theme";
 
@@ -32,7 +26,7 @@ type LoaderData = {
   user: Awaited<ReturnType<typeof getUser>>;
 };
 
-export const loader: LoaderFunction = async ({request}) => {
+export const loader: LoaderFunction = async ({ request }) => {
   return json<LoaderData>({
     user: await getUser(request),
   });
@@ -43,7 +37,7 @@ interface DocumentProps {
 }
 
 const Document = withEmotionCache(
-  ({children}: DocumentProps, emotionCache) => {
+  ({ children }: DocumentProps, emotionCache) => {
     const serverStyleData = useContext(ServerStyleContext);
     const clientStyleData = useContext(ClientStyleContext);
 
@@ -63,31 +57,31 @@ const Document = withEmotionCache(
 
     return (
       <html lang="en">
-      <head>
-        <meta charSet="utf-8"/>
-        <meta name="viewport" content="width=device-width,initial-scale=1"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstaticom"/>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-          rel="stylesheet"
-        />
-        <Meta/>
-        <Links/>
-        {serverStyleData?.map(({key, ids, css}) => (
-          <style
-            key={key}
-            data-emotion={`${key} ${ids.join(' ')}`}
-            dangerouslySetInnerHTML={{__html: css}}
+        <head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width,initial-scale=1" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstaticom" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+            rel="stylesheet"
           />
-        ))}
-      </head>
-      <body>
-      {children}
-      <ScrollRestoration/>
-      <Scripts/>
-      {process.env.NODE_ENV === 'development' ? <LiveReload/> : null}
-      </body>
+          <Meta />
+          <Links />
+          {serverStyleData?.map(({ key, ids, css }) => (
+            <style
+              key={key}
+              data-emotion={`${key} ${ids.join(" ")}`}
+              dangerouslySetInnerHTML={{ __html: css }}
+            />
+          ))}
+        </head>
+        <body>
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+          {process.env.NODE_ENV === "development" ? <LiveReload /> : null}
+        </body>
       </html>
     );
   }
@@ -100,5 +94,5 @@ export default function App() {
         <Outlet />
       </ChakraProvider>
     </Document>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import {StyleFunctionProps} from "@chakra-ui/theme-tools";
+import { StyleFunctionProps } from "@chakra-ui/theme-tools";
 
 const Card = {
   baseStyle: {

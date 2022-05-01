@@ -9,10 +9,10 @@ import {
   InputGroup,
   InputRightElement,
   useDisclosure,
-  useMergeRefs
+  useMergeRefs,
 } from "@chakra-ui/react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
-import {useField} from "remix-validated-form";
+import { useField } from "remix-validated-form";
 
 interface PasswordFieldProps extends InputProps {
   name?: string;
@@ -20,8 +20,14 @@ interface PasswordFieldProps extends InputProps {
   isRequired?: boolean;
 }
 
-export const PasswordField = React.forwardRef<HTMLInputElement, PasswordFieldProps>(
-  ({name = "password", label = "Password", isRequired = true, ...props}, ref) => {
+export const PasswordField = React.forwardRef<
+  HTMLInputElement,
+  PasswordFieldProps
+>(
+  (
+    { name = "password", label = "Password", isRequired = true, ...props },
+    ref
+  ) => {
     const { isOpen, onToggle } = useDisclosure();
     const inputRef = React.useRef<HTMLInputElement>(null);
     const mergeRef = useMergeRefs(inputRef, ref);
@@ -30,9 +36,9 @@ export const PasswordField = React.forwardRef<HTMLInputElement, PasswordFieldPro
     const onClickReveal = () => {
       onToggle();
       if (inputRef.current) {
-        inputRef.current.focus({ preventScroll: true })
+        inputRef.current.focus({ preventScroll: true });
       }
-    }
+    };
 
     return (
       <FormControl isInvalid={!!error} isRequired={isRequired}>
@@ -56,14 +62,10 @@ export const PasswordField = React.forwardRef<HTMLInputElement, PasswordFieldPro
             />
           </InputRightElement>
         </InputGroup>
-        {error ? (
-          <FormErrorMessage>
-            {error}
-          </FormErrorMessage>
-        ) : null}
+        {error ? <FormErrorMessage>{error}</FormErrorMessage> : null}
       </FormControl>
-    )
+    );
   }
-)
+);
 
-PasswordField.displayName = "PasswordField"
+PasswordField.displayName = "PasswordField";

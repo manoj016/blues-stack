@@ -4,10 +4,13 @@ import { useIsSubmitting } from "remix-validated-form";
 import { HTMLChakraProps } from "@chakra-ui/system";
 
 interface SubmitButtonProps {
-  text: string
+  text: string;
 }
 
-export const SubmitButton = React.forwardRef<HTMLChakraProps<"button">, SubmitButtonProps & ButtonProps>(({ text, ...rest }: SubmitButtonProps & ButtonProps, ref) => {
+export const SubmitButton = React.forwardRef<
+  HTMLChakraProps<"button">,
+  SubmitButtonProps & ButtonProps
+>(({ text, ...rest }: SubmitButtonProps & ButtonProps, ref) => {
   const isSubmitting = useIsSubmitting();
   return (
     <Button
@@ -21,6 +24,6 @@ export const SubmitButton = React.forwardRef<HTMLChakraProps<"button">, SubmitBu
       {text}
     </Button>
   );
-})
+});
 
-SubmitButton.displayName = "SubmitButton"
+SubmitButton.displayName = "SubmitButton";

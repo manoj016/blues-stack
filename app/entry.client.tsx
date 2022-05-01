@@ -11,22 +11,22 @@ interface ClientCacheProviderProps {
 }
 
 function ClientCacheProvider({ children }: ClientCacheProviderProps) {
-  const [cache, setCache] = React.useState(createEmotionCache())
+  const [cache, setCache] = React.useState(createEmotionCache());
 
   function reset() {
-    setCache(createEmotionCache())
+    setCache(createEmotionCache());
   }
 
   return (
     <ClientStyleContext.Provider value={{ reset }}>
       <CacheProvider value={cache}>{children}</CacheProvider>
     </ClientStyleContext.Provider>
-  )
+  );
 }
 
 hydrate(
   <ClientCacheProvider>
     <RemixBrowser />
   </ClientCacheProvider>,
-  document,
-)
+  document
+);
